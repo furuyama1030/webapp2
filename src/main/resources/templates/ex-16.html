@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>チャットアプリ</h1>
+    <form action="result-chat.html" th:action="/chat/post">
+        名前：<input type="text" name="name"><br>
+        コメント：<br><textarea name="text" rows="5" cols="50"></textarea><br>
+        <button type="submit">投稿</button>
+    </form>
+
+    <h2>コメント一覧</h2>
+    <ul>
+        <th:block th:each="user : ${itemList}">
+            <li th:text="'名前: ' + ${user.name} + ', コメント: ' + ${user.comment}"></li>
+        </th:block>
+    </ul>
+
+</body>
+
+</html>
