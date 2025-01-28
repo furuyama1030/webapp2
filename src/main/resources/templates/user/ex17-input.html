@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns="http://www.thmeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>アンケートフォーム</h1>
+    <form th:action="@{/question/create1}"
+    th:object="${ex17QuestionnaireForm}" method="post">
+    <div th:errors="*{name}" style="color: red;"></div><br>
+        名前：<br><input type="text" name="name"><br>
+        <div th:errors="*{mail}" style="color: red;"></div><br>
+        メール：<br><input type="text" name="mail"><br>
+        <div th:errors="*{gender}" style="color: red;"></div><br>
+        性別：<br>
+            <input type="radio" name="gender" value="male" checked>男
+            <input type="radio" name="gender" value="female">女
+            <div th:errors="*{hobbyList}" style="color: red;"></div><br>
+         趣味：<div th:each="hobby:${hobbyMap}">
+            <input type="checkbox" th:value="${hobby.key}" th:text="${hobby.value}" name="hobbyList">
+        </div>
+        <div th:errors="*{othertext}" style="color: red;"></div><br>
+        好きな言語：
+        <select name="langList" multiple>
+            <option th:each="lang : ${langMap}" th:value="${lang.key}" th:text="${lang.value}"></option>
+        </select><br>
+    
+        その他：<br>
+        <textarea name="othertext" rows="10" cols="40"></textarea><br>
+    <button>送信</button>
+    </form>
+</body>
+
+</html>

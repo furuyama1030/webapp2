@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo2.domain.Item;
-import com.example.demo2.domain.User;
+import com.example.demo2.domain.User2;
 
 import jakarta.servlet.ServletContext;
 
@@ -23,23 +23,21 @@ public class Ex16Controller {
 
     @RequestMapping("")
     public String index() {
-        List<User> chatList = (List<User>) application.getAttribute("chattext");
+        List<User2> chatList = (List<User2>) application.getAttribute("chattext");
         if (chatList == null) {
-            List<User> itemList = new ArrayList<>();
+            List<User2> itemList = new ArrayList<>();
             application.setAttribute("chattext", itemList);
         }
         return "ex-16";
     }
-    @Autowired
-    @RequestMapping("/post")
-    public String post(String name,String comment) {
-        List<User> chatLog = (List<User>) application.getAttribute("chattext");
+    // @Autowired
+    // @RequestMapping("/post")
+    // public String post(String name,String comment) {
+    //     List<User2> chatLog = (List<User2>) application.getAttribute("chattext");
 
-        User user =new User(name, comment);
-        itemList.add(user);
+    //     User2 user =new User2(name, comment);
 
-        application.setAttribute("chattext", itemList);
 
     }
 
-}
+// }
